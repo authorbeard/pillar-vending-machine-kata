@@ -9,14 +9,9 @@ class VendingMachine
     "quarter" => 25
   }
 
-  # PRODUCTS = {
-  #   'cola' => 1.00, 
-  #   'chips' => 0.50, 
-  #   'candy' => 0.65
-  # }
-
   def initialize
     self.products = {'cola' => 1.00, 'chips' => 0.50, 'candy' => 0.65}
+    display_products
   end
 
   def accept_coins(coin_name)

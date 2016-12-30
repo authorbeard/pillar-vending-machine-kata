@@ -11,8 +11,13 @@ describe VendingMachine do
     expect(vend.instance_of?(VendingMachine)).to eq(true)
   end
 
-  it "displays products" do
+  it "has products" do
     expect(vend.products).to eq(PRODUCTS)
+  end
+
+  it "displays products" do
+    allow($stdout).to receive(:puts)
+    expect($stdout).to receive(:puts).with("1. cola: $1.00\n2. chips: $0.50,\n3. candy: $0.65")
   end
 
   describe "#accept_coins" do
