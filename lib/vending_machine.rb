@@ -1,6 +1,7 @@
 require 'byebug'
 
 class VendingMachine
+  attr_accessor :products
 
   COINS = {
     "nickel" => 5,
@@ -8,18 +9,14 @@ class VendingMachine
     "quarter" => 25
   }
 
-  PRODUCTS = {
-    'cola' => 1.00, 
-    'chips' => 0.50, 
-    'candy' => 0.65
-  }
+  # PRODUCTS = {
+  #   'cola' => 1.00, 
+  #   'chips' => 0.50, 
+  #   'candy' => 0.65
+  # }
 
   def initialize
-    display_products
-  end
-
-  def display_products
-    return PRODUCTS
+    self.products = {'cola' => 1.00, 'chips' => 0.50, 'candy' => 0.65}
   end
 
   def accept_coins(coin_name)
