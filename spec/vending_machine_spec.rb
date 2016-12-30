@@ -173,43 +173,38 @@ describe VendingMachine do
   end
 
   describe "#make_change" do
-    v = VendingMachine.new(150, 1)
+    vm = VendingMachine.new(150, 1)
 
     it "calculates the correct amount of change and adds it to the coin_return" do
-      v.make_change
-      expect(v.coin_return).to eq(50)
+      vm.make_change
+      expect(vm.coin_return).to eq(50)
     end
   end
 
   describe "#return_coins" do
-    v = VendingMachine.new(75)
+    vm = VendingMachine.new(75)
     it "returns the user's inserted amount and resets the current_amount" do
 
       expect($stdout).to receive(:puts).with("INSERT COINS")
 
-      v.return_coins
-      expect(v.current_amount).to eq(0)
+      vm.return_coins
+      expect(vm.current_amount).to eq(0)
 
     end
   end
 
   describe "#sold_out?" do
-    v = VendingMachine.new(50, 1)
-    v.products[1][:stock] = 0
+    vm = VendingMachine.new(50, 1)
+    vm.products[1][:stock] = 0
 
     it 'checks to see if the current_selection is still in stock' do
+      allow($stdout).to receive(:puts)
       expect($stdout).to receive(:puts).with('SOLD OUT')
+      expect(vm).to receive(:check_display)
 
-      v.sold_out?(1)
-
-      expect(v).to receive(:check_display)
-      expect(v.current_selection).to eq(nil)
-
+      vm.sold_out?(2)
+      expect(vm.current_selection).to eq(nil)
     end
-
-
-
   end
-
 
 end

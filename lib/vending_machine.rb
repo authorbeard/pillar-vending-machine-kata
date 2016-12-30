@@ -50,6 +50,7 @@ class VendingMachine
   def select_product
     puts "Please make a selection."    
     user_input = gets
+
     @current_selection = button_press(user_input)
 
     if @current_amount >= @current_selection[:price] 
@@ -93,6 +94,15 @@ class VendingMachine
 
   def return_coins
     @current_amount -= @current_amount
+    check_display
+  end
+
+  def sold_out?(item)
+    if @products[item-1][:stock] == 0
+      @current_selection=nil
+      puts "SOLD OUT"
+    end
+
     check_display
   end
 
