@@ -87,6 +87,7 @@ describe VendingMachine do
       vend.current_amount = 40
 
       expect(vend).to receive(:gets).and_return(2)
+      allow($stdout).to receive(:puts)
       expect($stdout).to receive(:puts).with("CURRENT AMOUNT: 40")
 
       vend.select_product
