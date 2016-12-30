@@ -63,6 +63,19 @@ describe VendingMachine do
       vend.select_product
     end
 
+    it 'checks for change and adds correct amount to coin return' do
+      vend.current_amount = 125
+      vend.current_selection = vend.products[0]
+
+      expect(vend).to receive(:gets).and_return(2) 
+      expect(vend).to receive(:make_change)
+
+      vend.select_product
+
+      expect(vend.coin_return).to eq(25)
+
+    end
+
     it 'checks display after a product has been dispensed' do
       vend.current_amount=50
 
