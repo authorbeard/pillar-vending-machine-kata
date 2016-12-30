@@ -52,21 +52,32 @@ describe VendingMachine do
       expect(vend.current_selection[:name]).to eq ("chips")
     end
 
-    it 'dispenses product and displays THANK YOU when the user has inserted enough money' do
+    it 'dispenses product when the user has inserted enough money' do
       vend.current_amount = 50
       vend.current_selection = nil
 
-      expect(vend).to receive(:gets).and_return(2)
-      allow($stdout).to receive(:puts) 
- 
+      expect(vend).to receive(:gets).and_return(2) 
       expect(vend).to receive(:dispense_product)
 
       vend.select_product
 
     end
 
-    it 'sets current_amount to 0 and prompts user to insert coin after purchase' do
+    describe '#dispense_product' do
+      it 'thanks the user and resets current_selection and current_amount' do
+
+      allow($stdout).to receive(:puts)
+      expect($stdout).to receive(:puts).with("THANK YOU")
+
+      vend.dispense_product
+
       expect(vend.current_amount).to eq(0)
+      expect(vend.current_selection).to eq(nil)
+      end
+    end
+
+    it 'sets current_amount to 0 and prompts user to insert coin after purchase' do
+
       allow($stdout).to receive(:puts)
       expect($stdout).to receive(:puts).with('INSERT COIN')
     end

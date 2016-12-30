@@ -60,7 +60,7 @@ class VendingMachine
   def dispense_product
     @current_amount = 0
     @current_selection = nil
-    # puts "THANK YOU"
+    puts "THANK YOU"
   end
 
   # def check_display
