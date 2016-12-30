@@ -27,12 +27,7 @@ class VendingMachine
   ]
 
   def initialize
-    @products = PRODUCTS
-    display_products
-  end
-
-  def display_products
-
+    @products = PRODUCTS   
   end
 
   def accept_coins(coin_name)
@@ -44,4 +39,11 @@ class VendingMachine
       return COINS[coin_name]
     end
   end
+
+  def select_product
+    puts "Please make a selection."
+
+
+  end
+
 end

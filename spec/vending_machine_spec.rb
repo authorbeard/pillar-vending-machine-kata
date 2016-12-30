@@ -31,10 +31,15 @@ describe VendingMachine do
   end
 
   describe "#select_product" do 
-    # This assumes that a view of some sort has been written to display the products 
-    # and prompt the user to make a selection. 
-    # It does not assume that any money has been inserted and does not reference
-    # any coin insertion yet. 
+    
+    it 'prompts user to make a selection' do
+      allow($stdout).to receive(:puts)
+      expect($stdout).to receive(:puts).with("Please make a selection.")
+      expect(vend).to receive(:gets).and_return(2)
+
+      vend.select_product
+    end
+
     describe '#button_press' do 
       it 'selects a product based on button pushed' do
         expect (vend.button_press(2)).to eq({:name=>'chips', :price=>50})
