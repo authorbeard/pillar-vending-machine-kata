@@ -121,6 +121,13 @@ describe VendingMachine do
       end
     end
 
+    describe "#button_press" do
+      it 'returns the correct item' do 
+        item=vend.button_press(2)
+        expect(item[:name]).to eq("chips")
+      end
+    end
+
     describe '#check_display' do
       vend.current_amount=0
 
