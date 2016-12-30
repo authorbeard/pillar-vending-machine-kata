@@ -78,9 +78,9 @@ describe VendingMachine do
 
     describe '#check_display' do
       vend.current_amount=0
-      allout($stdout).to receive(:puts)
 
       it 'prompts user to insert coins when none have been added' do
+        allow($stdout).to receive(:puts)
         expect($stdout).to receive(:puts).with('INSERT COINS')
 
         vend.check_display
@@ -88,6 +88,7 @@ describe VendingMachine do
 
       it 'displays current amount when coins have been added' do
         vend.current_amount = 25
+        allow($stdout).to receive(:puts)
         expect ($stdout).to receive(:puts).with('CURRENT AMOUNT: 25')
 
         vend.check_display
@@ -100,12 +101,14 @@ describe VendingMachine do
 
         vend.check_display
 
+        allow($stdout).to receive(:puts)
         expect($stdout).to receive(:puts).with("CURRENT AMOUNT: 25")
 
         vend.check_display
 
         vend.current_amount = 0
 
+        allow($stdout).to receive(:puts)
         expect($stdout).to receive(:puts).with("INSERT COINS")
 
         vend.check_display
