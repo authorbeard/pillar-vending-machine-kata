@@ -30,7 +30,7 @@ describe VendingMachine do
     end
 
     it "keeps track of coins added" do
-      expect(vend.amt_added).to eq(40)
+      expect(vend.current_amount).to eq(40)
     end
   end
 
