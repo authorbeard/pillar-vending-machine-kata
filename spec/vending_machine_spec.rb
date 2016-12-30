@@ -182,9 +182,9 @@ describe VendingMachine do
   end
 
   describe "#return_coins" do
-    it "returns the user's inserted change and resets the current_amount" do
-      v.current_amount = 75
-
+    v = VendingMachine.new(75)
+    it "returns the user's inserted amount and resets the current_amount" do
+      
       v.return_coins
 
       expect(v.current_amount).to eq(0)

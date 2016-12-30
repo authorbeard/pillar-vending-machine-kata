@@ -66,11 +66,6 @@ class VendingMachine
   end
 
   def dispense_product
-    if @coin_return != 0
-      puts "Press 'CHANGE' button."
-      input = gets
-      # return_coins
-    end
     @current_amount = 0
     @current_selection = nil
     puts "THANK YOU"
@@ -91,6 +86,10 @@ class VendingMachine
 
   def make_change
     @coin_return = @current_amount - @current_selection[:price]
+  end
+
+  def return_coins
+    @current_amount -= @current_amount
   end
 
 end
