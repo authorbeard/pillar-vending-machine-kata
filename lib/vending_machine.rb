@@ -8,6 +8,12 @@ class VendingMachine
     "quarter" => 25
   }
 
+  PRODUCTS = {
+    'cola' => 1.00, 
+    'chips' => 0.50, 
+    'candy' => 0.65
+  }
+
   def initialize
   end
 
@@ -16,7 +22,8 @@ class VendingMachine
       return "I can't accept pennies, bub."
     elsif COINS[coin_name] == nil 
       return "I only take nickels, dimes or quarters"
-      
+    else
+      return COINS[coin_name]
     end
 
   end

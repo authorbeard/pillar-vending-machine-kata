@@ -9,6 +9,10 @@ describe VendingMachine do
     expect(vend.instance_of?(VendingMachine)).to eq(true)
   end
 
+  it "displays products" do
+    expect(vend.display_product).to eq(VendingMachine::PRODUCTS)
+  end
+
   describe "#accept_coins" do
     it "identifies coins based on string passed to it" do
       expect(vend.accept_coins("penny")).to eq("I can't accept pennies, bub.")
@@ -23,6 +27,9 @@ describe VendingMachine do
       expect(vend.accept_coins("dime")).to eq(10)
       expect(vend.accept_coins("quarter")).to eq(25) 
     end
+  end
+
+  describe "#select_product" do 
 
   end
 
