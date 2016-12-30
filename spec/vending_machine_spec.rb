@@ -72,6 +72,19 @@ describe VendingMachine do
 
     end
 
+    it 'displays properly when selection made without sufficient money added' do
+      expect($stdout).to receive(:puts).with("INSERT COINS")
+
+      vend.select_product
+
+      vend.current_amount = 40
+
+      expect($stdout).to receive(:puts).with("CURRENT AMOUNT: 40")
+
+      vend.select_product
+
+    end
+
     describe '#dispense_product' do
       it 'thanks the user and resets current_selection and current_amount' do
 
