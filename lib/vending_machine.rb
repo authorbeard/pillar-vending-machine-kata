@@ -10,8 +10,15 @@ class VendingMachine
   }
 
   def initialize
-    self.products = {'cola' => 1.00, 'chips' => 0.50, 'candy' => 0.65}
+    @products = [['cola', 1.00], ['chips', 0.50], ['candy', 0.65]]
+
     display_products
+  end
+
+  def display_products
+    # @products.each{|k, v| 
+
+    # }
   end
 
   def accept_coins(coin_name)
