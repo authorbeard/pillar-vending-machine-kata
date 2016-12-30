@@ -7,6 +7,8 @@ describe VendingMachine do
 
   it "can instatiate a vending machine" do
     expect(vend.instance_of?(VendingMachine)).to eq(true)
+    expect(vend.current_amount).to eq(0)
+    expect(vend.current_selection).to eq(nil)
   end
 
   it "has products" do
