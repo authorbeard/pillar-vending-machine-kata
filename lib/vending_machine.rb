@@ -86,7 +86,7 @@ class VendingMachine
 
   def make_change
 byebug
-    @coin_return = self.current_amount - self.current_selection[:price]
+    @coin_return = @current_amount - @current_selection[:price]
   end
 
 end

@@ -73,7 +73,9 @@ describe VendingMachine do
     it 'calculates correct change' do
       vend.current_amount = 125
       vend.current_selection = vend.products[0]
-      
+      expect(vend).to receive(:gets).and_return(1)      
+      vend.select_product
+
       expect(vend.coin_return).to eq(25)
     end
 
