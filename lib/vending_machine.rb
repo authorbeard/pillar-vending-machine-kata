@@ -66,7 +66,8 @@ class VendingMachine
 
   def check_display
     if @current_selection
-      puts "PRICE: #{@current_selection[:price]}"
+      price = @current_selection[:price]
+      puts "PRICE: #{price}"
     end
 
     if @current_amount==0

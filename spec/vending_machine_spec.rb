@@ -89,7 +89,7 @@ describe VendingMachine do
       it 'displays current amount when coins have been added' do
         vend.current_amount = 25
         allow($stdout).to receive(:puts)
-        expect ($stdout).to receive(:puts).with('CURRENT AMOUNT: 25')
+        expect($stdout).to receive(:puts).with("CURRENT AMOUNT: 25")
 
         vend.check_display
       end
