@@ -1,6 +1,6 @@
-# class VendingMachine
+class VendingMachine
 
-#   def initialize
-#   end
+  def initialize
+  end
 
-# end
+end

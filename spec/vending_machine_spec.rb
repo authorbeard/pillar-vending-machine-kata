@@ -4,6 +4,6 @@ require 'vending_machine'
 describe VendingMachine do 
   it "can instatiate a vending machine" do
     vend=VendingMachine.new
-    vend.should_be_instance_of(VendingMachine)
+    expect(vend.instance_of?(VendingMachine)).to eq(true)
   end
 end
