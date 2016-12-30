@@ -5,22 +5,13 @@ describe VendingMachine do
   
   vend=VendingMachine.new
 
-  PRODUCTS=[['cola', 1.00], ['chips', 0.50], ['candy', 0.65]]
-
   it "can instatiate a vending machine" do
     expect(vend.instance_of?(VendingMachine)).to eq(true)
   end
 
   it "has products" do
-    # byebug
     expect(vend.products.length).to eq(3)
     expect(vend.products.first[:price]).to eq(100)
-  end
-
-  it "displays products" do
-    allow($stdout).to receive(:puts)
-    
-    expect(vend.display_products).to eq("1. cola: $1.00\n2. chips: $0.50,\n3. candy: $0.65")
   end
 
   describe "#accept_coins" do

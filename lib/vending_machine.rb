@@ -32,10 +32,7 @@ class VendingMachine
   end
 
   def display_products
-    menu = ""
-    @products.each_with_index{|p, ind|
-      menu << "#{ind+1}. #{p[0]}: $#{p[1]}\n"
-    } 
+
   end
 
   def accept_coins(coin_name)
