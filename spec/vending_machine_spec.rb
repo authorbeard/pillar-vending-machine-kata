@@ -48,20 +48,21 @@ describe VendingMachine do
       vend.select_product
     end
 
-    describe '#button_press' do 
-      it 'selects a product based on button pushed' do
-        item = vend.button_press(2)
-        expect(item[:price]).to eq(50)
-      end 
+    it 'selects a product based on button pushed' do
+      expect(vend.current_selection[:name]).to eq ("chips")
     end
 
     it 'dispenses product and displays THANK YOU when the user has inserted enough money' do
       vend.current_amount = 50
-      allow($stdout).to receive(:puts)
-      expect($stdout).to receive(:puts).with("THANK YOU")
-      expect(vend).to receive(:gets).and_return(2)
+      vend.current_selection = nil
 
-      expect(vend.current_selection).to eq(nil)
+      expect(vend).to receive(:gets).and_return(2)
+      allow($stdout).to receive(:puts) 
+ 
+      expect(vend).to receive(:dispense_product)
+
+      vend.select_product
+
     end
 
     it 'sets current_amount to 0 and prompts user to insert coin after purchase' do

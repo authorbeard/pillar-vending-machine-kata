@@ -48,7 +48,7 @@ class VendingMachine
     user_input = gets
     @current_selection = button_press(user_input)
     if @current_selection[:price] == @current_amount
-      dispense_item
+      dispense_product
     end
 
   end
@@ -57,10 +57,10 @@ class VendingMachine
     return @products[u_input.to_i-1]
   end
 
-  def dispense_item
-    puts "THANK YOU"
+  def dispense_product
     @current_amount = 0
-    return @current_selection
+    @current_selection = nil
+    # puts "THANK YOU"
   end
 
   # def check_display
