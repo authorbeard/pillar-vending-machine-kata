@@ -1,7 +1,7 @@
 require 'byebug'
 
 class VendingMachine
-  attr_accessor :products
+  attr_accessor :products, :amt_added
 
   COINS = {
     "nickel" => 5,
@@ -28,6 +28,7 @@ class VendingMachine
 
   def initialize
     @products = PRODUCTS   
+    @amt_added = 0
   end
 
   def accept_coins(coin_name)
@@ -36,6 +37,7 @@ class VendingMachine
     elsif COINS[coin_name] == nil 
       return "I only take nickels, dimes or quarters"
     else
+      @amt_added += COINS[coin_name]
       return COINS[coin_name]
     end
   end
