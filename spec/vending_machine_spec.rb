@@ -60,6 +60,15 @@ describe VendingMachine do
       expect(vend).to receive(:dispense_product)
 
       vend.select_product
+    end
+
+    it 'checks display after a product has been dispensed' do
+      vend.current_amount=50
+
+      expect(vend).to receive(:gets).and_return(2) 
+      expect(vend).to receive(:check_display)
+
+      vend.select_product
 
     end
 
