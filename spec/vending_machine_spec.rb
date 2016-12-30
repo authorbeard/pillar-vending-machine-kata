@@ -188,6 +188,8 @@ describe VendingMachine do
       v.return_coins
 
       expect(v.current_amount).to eq(0)
+
+      expect($stdout).to receive(:puts).with("INSERT COIN")
     end
   end
 
