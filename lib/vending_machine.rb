@@ -49,6 +49,7 @@ class VendingMachine
 
     if item[:price] == @current_amount
       puts "THANK YOU"
+      @current_amount = 0
       return item
     end
 

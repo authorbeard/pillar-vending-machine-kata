@@ -67,6 +67,13 @@ describe VendingMachine do
       allow($stdout).to receive(:puts)
       expect($stdout).to receive(:puts).with('INSERT COIN')
     end
+
+    describe '#check_display' do
+      it 'prompts the user to insert coins if none have been added' do
+        allow($stdout).to receive(:puts)
+        expect($stdout).to recive(:puts).with('INSERT COIN')
+      end
+    end
   end
 
 end
