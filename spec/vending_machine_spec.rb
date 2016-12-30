@@ -83,7 +83,6 @@ describe VendingMachine do
     end
 
     it 'displays current amount when selection made without sufficient money added' do
-
       vend.current_amount = 40
 
       expect(vend).to receive(:gets).and_return(2)
@@ -91,7 +90,6 @@ describe VendingMachine do
       expect($stdout).to receive(:puts).with("CURRENT AMOUNT: 40")
 
       vend.select_product
-
     end
 
     describe '#dispense_product' do
@@ -146,6 +144,18 @@ describe VendingMachine do
       end
 
     end
+
+  end
+
+  describe "#make_change" do
+    vend = VendingMachine.new(50, 1)
+
+    it "calculates the correct amount of change and adds it to the coin_return" do
+      vend.make_change
+      expect(vend.coin_return).to eq(50)
+    end
+
+    
 
   end
 
