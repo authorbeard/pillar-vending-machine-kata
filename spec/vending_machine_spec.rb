@@ -121,24 +121,6 @@ describe VendingMachine do
       expect(vend.current_selection).to eq(nil)
       end
 
-      it 'prompts the user to make a selection to return coins if any change is due' do
-        vend.coin_return = 25
-
-        allow($stdout).to receive(:puts)
-        expect($stdout).to receive(:puts).with("Press 'CHANGE' button.")
-        expect(vend).to receive(:gets).and_return(nil)
-
-        vend.dispense_product
-      end
-
-      it 'does nothing when no change is due' do
-        vend.coin_return = 0
-
-        expect($stdout).to_not receive(:puts).with("Press 'CHANGE' button.")
-
-        vend.dispense_product
-
-      end
     end
 
     describe "#button_press" do
@@ -196,6 +178,16 @@ describe VendingMachine do
     it "calculates the correct amount of change and adds it to the coin_return" do
       v.make_change
       expect(v.coin_return).to eq(50)
+    end
+  end
+
+  describe "#return_coins" do
+    it "returns the user's inserted change and resets the current_amount" do
+      v.current_amount = 75
+
+      v.return_coins
+
+      expect(v.current_amount).to eq(0)
     end
   end
 
