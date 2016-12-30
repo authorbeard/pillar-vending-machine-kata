@@ -72,16 +72,21 @@ describe VendingMachine do
 
     end
 
-    it 'displays properly when selection made without sufficient money added' do
+    it 'prompts for coins when a selection is made without money added' do
       vend.current_amount = 0 
-      
+
       expect(vend).to receive(:gets).and_return(2) 
+      allow($stdout).to receive(:puts)
       expect($stdout).to receive(:puts).with("INSERT COINS")
 
       vend.select_product
+    end
+
+    it 'displays current amount when selection made without sufficient money added' do
 
       vend.current_amount = 40
 
+      expect(vend).to receive(:gets).and_return(2)
       expect($stdout).to receive(:puts).with("CURRENT AMOUNT: 40")
 
       vend.select_product
