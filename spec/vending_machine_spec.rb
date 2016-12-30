@@ -10,7 +10,7 @@ describe VendingMachine do
   end
 
   it "displays products" do
-    expect(vend.display_product).to eq(VendingMachine::PRODUCTS)
+    expect(vend.display_products).to eq(VendingMachine::PRODUCTS)
   end
 
   describe "#accept_coins" do

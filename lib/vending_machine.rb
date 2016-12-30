@@ -15,6 +15,11 @@ class VendingMachine
   }
 
   def initialize
+    display_products
+  end
+
+  def display_products
+    return PRODUCTS
   end
 
   def accept_coins(coin_name)
