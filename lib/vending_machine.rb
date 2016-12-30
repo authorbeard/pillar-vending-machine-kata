@@ -12,17 +12,20 @@ class VendingMachine
   PRODUCTS = [
     {
       name: 'cola',
-      price: 100
+      price: 100,
+      stock: 5
     },
 
     {
       name: 'chips', 
-      price: 50
+      price: 50,
+      stock: 5
     },
 
     {
       name: 'candy',
-      price: 65
+      price: 65,
+      stock: 5
     }
   ]
 
