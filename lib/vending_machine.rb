@@ -1,7 +1,7 @@
 require 'byebug'
 
 class VendingMachine
-  attr_accessor :products, :current_amount, :current_selection
+  attr_accessor :products, :current_amount, :current_selection, :coin_return
 
   COINS = {
     "nickel" => 5,
@@ -26,10 +26,11 @@ class VendingMachine
     }
   ]
 
-  def initialize
+  def initialize(current_amount=0, current_selection=nil)
     @products = PRODUCTS   
-    @current_amount = 0
-
+    @current_amount = current_amount
+    @current_selection = @products[current_selection - 1] if current_selection
+    @coin_return=0
   end
 
   def accept_coins(coin_name)
@@ -78,6 +79,12 @@ class VendingMachine
     else
       puts "CURRENT AMOUNT: #{@current_amount}"
     end
+  end
+
+  def make_change
+
+# byebug
+    @coin_return = @current_amount - @current_selection[:price]
   end
 
 end

@@ -9,6 +9,7 @@ describe VendingMachine do
     expect(vend.instance_of?(VendingMachine)).to eq(true)
     expect(vend.current_amount).to eq(0)
     expect(vend.current_selection).to eq(nil)
+    expect(vend.coin_return).to eq(0)
   end
 
   it "has products" do
@@ -148,14 +149,14 @@ describe VendingMachine do
   end
 
   describe "#make_change" do
-    vend = VendingMachine.new(50, 1)
+    v = VendingMachine.new(150, 1)
 
     it "calculates the correct amount of change and adds it to the coin_return" do
-      vend.make_change
-      expect(vend.coin_return).to eq(50)
+      v.make_change
+      expect(v.coin_return).to eq(50)
     end
 
-    
+
 
   end
 
