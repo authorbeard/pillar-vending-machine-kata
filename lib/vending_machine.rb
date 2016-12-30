@@ -1,7 +1,7 @@
 require 'byebug'
 
 class VendingMachine
-  attr_accessor :products, :current_amount
+  attr_accessor :products, :current_amount, :current_selection
 
   COINS = {
     "nickel" => 5,
@@ -57,6 +57,10 @@ class VendingMachine
 
   def button_press(u_input)
     return @products[u_input.to_i-1]
+  end
+
+  def check_display
+
   end
 
 end
