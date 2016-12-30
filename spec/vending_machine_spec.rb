@@ -49,10 +49,6 @@ describe VendingMachine do
       vend.select_product
     end
 
-    it 'selects a product based on button pushed' do
-      expect(vend.current_selection[:name]).to eq ("chips")
-    end
-
     it 'dispenses product when the user has inserted enough money' do
       vend.current_amount = 50
       vend.current_selection = nil
@@ -75,6 +71,9 @@ describe VendingMachine do
     end
 
     it 'calculates correct change' do
+      vend.current_amount = 125
+      vend.current_selection = vend.products[0]
+      
       expect(vend.coin_return).to eq(25)
     end
 

@@ -49,8 +49,10 @@ class VendingMachine
     user_input = gets
     @current_selection = button_press(user_input)
 
-    if @current_selection[:price] >= @current_amount
-      make_change
+    if @current_amount >= @current_selection[:price] 
+      if @current_amount > @current_selection[:price]
+        make_change
+      end
       dispense_product
       check_display
     else
@@ -83,9 +85,8 @@ class VendingMachine
   end
 
   def make_change
-
-# byebug
-    @coin_return = @current_amount - @current_selection[:price]
+byebug
+    @coin_return = self.current_amount - self.current_selection[:price]
   end
 
 end
