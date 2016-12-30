@@ -193,5 +193,23 @@ describe VendingMachine do
     end
   end
 
+  describe "#sold_out" do
+    v = VendingMachine.new(50, 1)
+    v.products[1].stock = 0
+
+    it 'checks to see if the current_selection is still in stock' do
+      expect($stdout).to receive(:puts).with('SOLD OUT')
+
+      v.sold_out(1)
+
+      expect(v).to receive(:check_display)
+      expect(v.current_selection).to eq(nil)
+
+    end
+
+
+
+  end
+
 
 end
