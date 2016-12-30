@@ -4,7 +4,7 @@ class VendingMachine
   attr_accessor :products
 
   COINS = {
-    "nickel" => 05,
+    "nickel" => 5,
     "dime" => 10,
     "quarter" => 25
   }
@@ -42,8 +42,15 @@ class VendingMachine
 
   def select_product
     puts "Please make a selection."
+    
+    user_input = gets
 
+    prod=button_press(user_input)
 
+  end
+
+  def button_press(u_input)
+    return @products[u_input.to_i-1]
   end
 
 end

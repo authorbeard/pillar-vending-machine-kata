@@ -28,6 +28,10 @@ describe VendingMachine do
       expect(vend.accept_coins("dime")).to eq(10)
       expect(vend.accept_coins("quarter")).to eq(25) 
     end
+
+    it "keeps track of coins added" do
+      expect(vend.coins_added).to eq(40)
+    end
   end
 
   describe "#select_product" do 
@@ -42,6 +46,7 @@ describe VendingMachine do
 
     describe '#button_press' do 
       it 'selects a product based on button pushed' do
+
         expect (vend.button_press(2)).to eq({:name=>'chips', :price=>50})
       end 
     end
