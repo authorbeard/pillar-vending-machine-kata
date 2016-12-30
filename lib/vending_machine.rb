@@ -45,7 +45,12 @@ class VendingMachine
   def select_product
     puts "Please make a selection."    
     user_input = gets
+    item = button_press(user_input)
 
+    if item[:price] == @current_amount
+      puts "THANK YOU"
+      return item
+    end
 
   end
 
