@@ -29,6 +29,7 @@ class VendingMachine
   def initialize
     @products = PRODUCTS   
     @current_amount = 0
+
   end
 
   def accept_coins(coin_name)
@@ -45,7 +46,7 @@ class VendingMachine
   def select_product
     puts "Please make a selection."    
     user_input = gets
-    item = button_press(user_input)
+    @curren_selection = button_press(user_input)
 
     if item[:price] == @current_amount
       puts "THANK YOU"
@@ -59,8 +60,9 @@ class VendingMachine
     return @products[u_input.to_i-1]
   end
 
-  def check_display
+  # def check_display
+  #   if 
 
-  end
+  # end
 
 end

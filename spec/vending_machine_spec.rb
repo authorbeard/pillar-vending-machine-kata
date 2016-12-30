@@ -42,6 +42,7 @@ describe VendingMachine do
     it 'prompts user to make a selection' do
       allow($stdout).to receive(:puts)
       expect($stdout).to receive(:puts).with("Please make a selection.")
+
       expect(vend).to receive(:gets).and_return(2)
 
       vend.select_product
@@ -76,6 +77,7 @@ describe VendingMachine do
         expect($stdout).to recive(:puts).with('INSERT COIN')
       end
     end
+
   end
 
 end
