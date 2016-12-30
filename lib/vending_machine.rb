@@ -47,8 +47,11 @@ class VendingMachine
     puts "Please make a selection."    
     user_input = gets
     @current_selection = button_press(user_input)
+
     if @current_selection[:price] == @current_amount
       dispense_product
+      check_display
+    else
       check_display
     end
 
