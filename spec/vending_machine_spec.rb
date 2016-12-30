@@ -35,7 +35,8 @@ describe VendingMachine do
   end
 
   describe "#select_product" do 
-    
+    vend.current_amount = 0
+
     it 'prompts user to make a selection' do
       allow($stdout).to receive(:puts)
       expect($stdout).to receive(:puts).with("Please make a selection.")
@@ -46,8 +47,8 @@ describe VendingMachine do
 
     describe '#button_press' do 
       it 'selects a product based on button pushed' do
-
-        expect (vend.button_press(2)).to eq({:name=>'chips', :price=>50})
+        item = vend.button_press(2)
+        expect(item[:price]).to eq(50)
       end 
     end
   end

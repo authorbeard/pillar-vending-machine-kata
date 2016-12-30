@@ -43,13 +43,9 @@ class VendingMachine
   end
 
   def select_product
-    puts "Please make a selection."
-    
+    puts "Please make a selection."    
     user_input = gets
 
-    prod=button_press(user_input)
-
-    # if 
 
   end
 
