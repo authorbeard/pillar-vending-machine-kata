@@ -76,19 +76,41 @@ describe VendingMachine do
       end
     end
 
-    it 'prompts user to insert coin after purchase' do
-      allow($stdout).to receive(:puts)
-      expect($stdout).to receive(:puts).with('INSERT COIN')
-
-      vend.check_display
-
-    end
-
     describe '#check_display' do
-      it 'prompts the user to insert coins if none have been added' do
-        allow($stdout).to receive(:puts)
-        expect($stdout).to receive(:puts).with('INSERT COIN')
+      vend.current_amount=0
+      allout($stdout).to receive(:puts)
+
+      it 'prompts user to insert coins when none have been added' do
+        expect($stdout).to receive(:puts).with('INSERT COINS')
+
+        vend.check_display
       end
+
+      it 'displays current amount when coins have been added' do
+        vend.current_amount = 25
+        expect ($stdout).to receive(:puts).with('CURRENT AMOUNT: 25')
+
+        vend.check_display
+      end
+
+      it 'displays current item price and correct prompt when a selection has been made' do
+        vend.current_selection = {name: "candy", price: 65}
+        allow($stdout).to receive(:puts)
+        expect($stdout).to receive(:puts).with("PRICE: 65")
+
+        vend.check_display
+
+        expect($stdout).to receive(:puts).with("CURRENT AMOUNT: 25")
+
+        vend.check_display
+
+        vend.current_amount = 0
+
+        expect($stdout).to receive(:puts).with("INSERT COINS")
+
+        vend.check_display
+      end
+
     end
 
   end

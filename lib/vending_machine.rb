@@ -49,7 +49,7 @@ class VendingMachine
     @current_selection = button_press(user_input)
     if @current_selection[:price] == @current_amount
       dispense_product
-      # check_display
+      check_display
     end
 
   end
@@ -64,9 +64,16 @@ class VendingMachine
     puts "THANK YOU"
   end
 
-  # def check_display
-  #   if 
+  def check_display
+    if @current_selection
+      puts "PRICE: #{@current_selection[:price]}"
+    end
 
-  # end
+    if @current_amount==0
+      puts 'INSERT COINS'
+    else
+      puts "CURRENT AMOUNT: #{@current_amount}"
+    end
+  end
 
 end
