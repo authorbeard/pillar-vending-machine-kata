@@ -90,6 +90,7 @@ class VendingMachine
 
   def return_coins
     @current_amount -= @current_amount
+    check_display
   end
 
 end

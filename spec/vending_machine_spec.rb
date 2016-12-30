@@ -184,12 +184,12 @@ describe VendingMachine do
   describe "#return_coins" do
     v = VendingMachine.new(75)
     it "returns the user's inserted amount and resets the current_amount" do
-      
-      v.return_coins
 
+      expect($stdout).to receive(:puts).with("INSERT COINS")
+
+      v.return_coins
       expect(v.current_amount).to eq(0)
 
-      expect($stdout).to receive(:puts).with("INSERT COIN")
     end
   end
 
