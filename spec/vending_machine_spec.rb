@@ -63,7 +63,7 @@ describe VendingMachine do
       vend.select_product
     end
 
-    it 'checks for change and adds correct amount to coin return' do
+    it 'checks for change when appropriate' do
       vend.current_amount = 125
       vend.current_selection = vend.products[0]
 
@@ -72,8 +72,10 @@ describe VendingMachine do
 
       vend.select_product
 
-      expect(vend.coin_return).to eq(25)
+    end
 
+    it 'calculates correct change' do
+      expect(vend.coin_return).to eq(25)
     end
 
     it 'checks display after a product has been dispensed' do
