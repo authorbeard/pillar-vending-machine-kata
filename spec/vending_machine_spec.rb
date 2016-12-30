@@ -49,6 +49,15 @@ describe VendingMachine do
       vend.select_product
     end
 
+    it 'checks the stock of an item' do
+      vend.products[0][:stock] = 0
+
+      expect(vend).to receive(:gets).and_return(1)
+      expect(vend).to receive(:sold_out?)
+
+      vend.select_product
+    end
+
     it 'dispenses product when the user has inserted enough money' do
       vend.current_amount = 50
       vend.current_selection = nil
@@ -57,6 +66,7 @@ describe VendingMachine do
       expect(vend).to receive(:dispense_product)
 
       vend.select_product
+      expect(vend.current_selection).to eq(nil)
     end
 
     it 'checks for change when appropriate' do
@@ -67,7 +77,6 @@ describe VendingMachine do
       expect(vend).to receive(:make_change)
 
       vend.select_product
-
     end
 
     it 'calculates correct change' do
@@ -86,7 +95,6 @@ describe VendingMachine do
       expect(vend).to receive(:check_display)
 
       vend.select_product
-
     end
 
     it 'prompts for coins when a selection is made without money added' do

@@ -51,6 +51,8 @@ class VendingMachine
     puts "Please make a selection."    
     user_input = gets
 
+    sold_out?(user_input)
+
     @current_selection = button_press(user_input)
 
     if @current_amount >= @current_selection[:price] 
