@@ -49,6 +49,7 @@ class VendingMachine
     @current_selection = button_press(user_input)
     if @current_selection[:price] == @current_amount
       dispense_product
+      # check_display
     end
 
   end
