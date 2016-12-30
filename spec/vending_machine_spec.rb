@@ -12,7 +12,9 @@ describe VendingMachine do
   end
 
   it "has products" do
-    expect(vend.products).to eq(PRODUCTS)
+    # byebug
+    expect(vend.products.length).to eq(3)
+    expect(vend.products.first[:price]).to eq(100)
   end
 
   it "displays products" do

@@ -4,21 +4,38 @@ class VendingMachine
   attr_accessor :products
 
   COINS = {
-    "nickel" => 5,
+    "nickel" => 05,
     "dime" => 10,
     "quarter" => 25
   }
 
-  def initialize
-    @products = [['cola', 1.00], ['chips', 0.50], ['candy', 0.65]]
+  PRODUCTS = [
+    {
+      name: 'cola',
+      price: 100
+    },
 
+    {
+      name: 'chips', 
+      price: 50
+    },
+
+    {
+      name: 'candy',
+      price: 65
+    }
+  ]
+
+  def initialize
+    @products = PRODUCTS
     display_products
   end
 
   def display_products
-    # @products.each{|k, v| 
-
-    # }
+    menu = ""
+    @products.each_with_index{|p, ind|
+      menu << "#{ind+1}. #{p[0]}: $#{p[1]}\n"
+    } 
   end
 
   def accept_coins(coin_name)
@@ -29,6 +46,5 @@ class VendingMachine
     else
       return COINS[coin_name]
     end
-
   end
 end
