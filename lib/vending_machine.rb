@@ -29,11 +29,16 @@ class VendingMachine
     }
   ]
 
-  def initialize(current_amount=0, current_selection=nil)
-    @products = PRODUCTS   
+  def initialize(current_amount=0, current_selection=nil)   
+    add_products
     @current_amount = current_amount
     @current_selection = @products[current_selection - 1] if current_selection
     @coin_return=0
+  end
+
+  def add_products
+    @products ||= []
+    PRODUCTS.each{|p| @products << p}
   end
 
   def accept_coins(coin_name)
@@ -51,10 +56,9 @@ class VendingMachine
     puts "Please make a selection."    
     user_input = gets
 
-    sold_out?(user_input)
+    check_display if sold_out?(user_input)
 
     @current_selection = button_press(user_input)
-
     if @current_amount >= @current_selection[:price] 
       if @current_amount > @current_selection[:price]
         make_change
@@ -78,6 +82,7 @@ class VendingMachine
   end
 
   def check_display
+    disp = ""
     if @current_selection
       price = @current_selection[:price]
       puts "PRICE: #{price}"
@@ -103,9 +108,8 @@ class VendingMachine
     if @products[item-1][:stock] == 0
       @current_selection=nil
       puts "SOLD OUT"
+      check_display
     end
-
-    check_display
   end
 
 end

@@ -18,6 +18,8 @@ describe VendingMachine do
   end
 
   describe "#accept_coins" do
+  vend=VendingMachine.new
+
     it "identifies coins based on string passed to it" do
       expect(vend.accept_coins("penny")).to eq("I can't accept pennies, bub.")
     end
@@ -38,7 +40,7 @@ describe VendingMachine do
   end
 
   describe "#select_product" do 
-    vend.current_amount = 0
+    vend=VendingMachine.new
 
     it 'prompts user to make a selection' do
       allow($stdout).to receive(:puts)
@@ -50,8 +52,6 @@ describe VendingMachine do
     end
 
     it 'checks the stock of an item' do
-      vend.products[0][:stock] = 0
-
       expect(vend).to receive(:gets).and_return(1)
       expect(vend).to receive(:sold_out?)
 
@@ -63,9 +63,10 @@ describe VendingMachine do
       vend.current_selection = nil
 
       expect(vend).to receive(:gets).and_return(2) 
-      expect(vend).to receive(:dispense_product)
 
       vend.select_product
+
+      expect(vend).to_not receive(:dispense_product)
       expect(vend.current_selection).to eq(nil)
     end
 
@@ -91,7 +92,7 @@ describe VendingMachine do
     it 'checks display after a product has been dispensed' do
       vend.current_amount=50
 
-      expect(vend).to receive(:gets).and_return(2) 
+      expect(vend).to receive(:gets).and_return(3) 
       expect(vend).to receive(:check_display)
 
       vend.select_product
@@ -118,6 +119,10 @@ describe VendingMachine do
     end
 
     describe '#dispense_product' do
+      it 'reduces the stock of the item by 1' do
+
+      end
+      
       it 'thanks the user and resets current_selection and current_amount' do
 
       allow($stdout).to receive(:puts)
