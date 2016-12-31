@@ -95,7 +95,11 @@ class VendingMachine
     if @current_amount==0
       puts 'INSERT COINS'
     else
-      puts "CURRENT AMOUNT: #{@current_amount}"
+      if exact_change
+        puts "EXACT CHANGE ONLY"
+      else
+        puts "CURRENT AMOUNT: #{@current_amount}"
+      end
     end
     return false
   end
@@ -120,6 +124,7 @@ class VendingMachine
   end
 
   def exact_change
+# byebug
     max = @products.collect{|i| i[:price]}.max
     if @current_amount > max
 

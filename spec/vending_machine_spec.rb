@@ -243,12 +243,6 @@ describe VendingMachine do
     # 4) machine has enough nickels, dimes and quarters to make any change.
     vm = VendingMachine.new
 
-    it 'gets checked every time a user adds coins' do
-      vm.accept_coins("quarter")
-
-      expect(vm).to receive(:exact_change)
-    end
-
     it 'only fires when user will be getting change' do
       expect(vm.exact_change).to eq(nil)
     end
