@@ -1,4 +1,6 @@
 source "https://rubygems.org"
 
-gem 'rspec'
+ruby "~>2.3.0"
+
+gem 'rspec', "~>3.5.0"
 gem 'byebug'
