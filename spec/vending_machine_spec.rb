@@ -121,13 +121,14 @@ describe VendingMachine do
     describe '#dispense_product' do
       it 'reduces the stock of the item by 1' do
         vend.add_products
-        vend.current_selection=vend.products[3]
-        vend.current_amount=vend.current_selection[:price]
-        stock=vend.current_selection[:stock]
+        selection = vend.products.first
+        vend.current_selection = selection
+        vend.current_amount = selection[:price]
+        stock = selection[:stock]
 
         vend.dispense_product
 
-        expect(vend.products[3][:stock]).to eq(stock-1)
+        expect(vend.products.first[:stock]).to eq(stock -1)
 
       end
       
