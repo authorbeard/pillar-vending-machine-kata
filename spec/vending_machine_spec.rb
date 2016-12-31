@@ -244,20 +244,23 @@ describe VendingMachine do
     vm = VendingMachine.new
 
     it 'only fires when user will be getting change' do
-      expect(vm.exact_change).to eq(nil)
+      expect(vm.exact_change).to eq(false)
     end
 
     it 'returns nil when it can make change' do
       4.times{vm.accept_coins("quarter")}
 
-      expect(vm.exact_change).to eq(nil)
+      expect(vm.exact_change).to eq(false)
     end
 
     it 'returns EXACT CHANGE ONLY when it cannot make change' do
-      # DID NOT DO THIS ONE; NOT SURE HOW THIS SITUATION COULD ARISE UNLESS 
-      # I ASSUME A FINITE AMOUNT OF CHANGE IN THE MACHINE, THEN TRACK IT CAREFULLY
-      # THROUGH A NUMBER OF TRANSACTIONS, THEN CODE TO A CERTAIN CASE
-
+      # DID NOT DO THIS ONE; INSTRUCTIONS APPEAR CONTRADICTORY AND IT'S NOT
+      # CLEAR HOW THIS SITUATION COULD ARISE GIVEN THE CONSTRAINTS ON #accept_coins
+      # WITHOUT EXTENSIVE ADDITIONAL CODING TO TRACK AMT OF CHANGE CURRENTLY IN
+      # THE MACHINE.
+      # WHAT FOLLOWS IS A PRETTY LAME STUB.
+      vm.current_amount = 104
+      expect(vm.exact_change).to eq("WHUT")
     end
 
 

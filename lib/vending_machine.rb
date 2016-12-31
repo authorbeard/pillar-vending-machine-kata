@@ -124,10 +124,15 @@ class VendingMachine
   end
 
   def exact_change
-# byebug
     max = @products.collect{|i| i[:price]}.max
     if @current_amount > max
-
+      if (@current_amount - max) % 5 != 0
+        return "WHUT"
+      else
+        return true
+      end
+    else
+      return false
     end
   end
 
