@@ -119,7 +119,7 @@ describe VendingMachine do
 
       expect(vend).to receive(:gets).and_return(2)
       allow($stdout).to receive(:puts)
-      expect($stdout).to receive(:puts).with("CURRENT AMOUNT: 40")
+      expect($stdout).to receive(:puts).with("CURRENT AMOUNT: $0.40")
 
       vend.select_product
     end
@@ -172,7 +172,7 @@ describe VendingMachine do
       it 'displays current amount when coins have been added' do
         vend.current_amount = 25
         allow($stdout).to receive(:puts)
-        expect($stdout).to receive(:puts).with("CURRENT AMOUNT: 25")
+        expect($stdout).to receive(:puts).with("CURRENT AMOUNT: $0.25")
 
         vend.check_display
       end
@@ -185,7 +185,7 @@ describe VendingMachine do
         vend.check_display
 
         allow($stdout).to receive(:puts)
-        expect($stdout).to receive(:puts).with("CURRENT AMOUNT: 25")
+        expect($stdout).to receive(:puts).with("CURRENT AMOUNT: $0.25")
 
         vend.check_display
 
@@ -196,9 +196,7 @@ describe VendingMachine do
 
         vend.check_display
       end
-
     end
-
   end
 
   describe "#make_change" do
@@ -236,11 +234,6 @@ describe VendingMachine do
   end
 
   describe "#exact_change" do
-    # assume 2 things:
-    # 1) money has been inserted
-    # 2) more has been inserted than the price of any item
-    # 3) triggered after accept_coins
-    # 4) machine has enough nickels, dimes and quarters to make any change.
     vm = VendingMachine.new
 
     it 'only fires when user will be getting change' do
@@ -262,8 +255,6 @@ describe VendingMachine do
       vm.current_amount = 104
       expect(vm.exact_change).to eq("WHUT")
     end
-
-
   end
 
 end
