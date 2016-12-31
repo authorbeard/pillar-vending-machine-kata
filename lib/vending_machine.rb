@@ -114,7 +114,6 @@ class VendingMachine
 
     print "ITEM STOCK: #{@products[index][:stock]}\n"
     if @products[index][:stock] < 1
-  # byebug
       @current_selection = nil
       puts "SOLD OUT"
       check_display

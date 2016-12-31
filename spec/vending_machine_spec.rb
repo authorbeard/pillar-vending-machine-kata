@@ -231,4 +231,38 @@ describe VendingMachine do
     end
   end
 
+  describe "#exact_change" do
+    # assume 2 things:
+    # 1) money has been inserted
+    # 2) more has been inserted than the price of any item
+    # 3) triggered after accept_coins
+    # 4) machine has enough nickels, dimes and quarters to make any change.
+    vm = VendingMachine.new
+
+    it 'gets checked every time a user adds coins' do
+      vm.accept_coins("quarter")
+
+      expect(vm).to receive(:exact_change)
+    end
+
+    it 'only fires when user will be getting change' do
+      expect(vm.exact_change).to eq(nil)
+    end
+
+    it 'returns nil when it can make change' do
+      4.times{vm.accept_coins("quarter")}
+
+      expect(vm.exact_change).to eq(nil)
+    end
+
+    it 'returns EXACT CHANGE ONLY when it cannot make change' do
+      # DID NOT DO THIS ONE; NOT SURE HOW THIS SITUATION COULD ARISE UNLESS 
+      # I ASSUME A FINITE AMOUNT OF CHANGE IN THE MACHINE, THEN TRACK IT CAREFULLY
+      # THROUGH A NUMBER OF TRANSACTIONS, THEN CODE TO A CERTAIN CASE
+
+    end
+
+
+  end
+
 end
