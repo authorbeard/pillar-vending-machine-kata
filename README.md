@@ -12,7 +12,7 @@ gem install bundler
 3. Then you enter 
 
 ```
-bundle instal
+bundle install
 ```
 
 4. At that point, all you really have to do is type in 'rspec' and it'll pretty much do the rest from there. 
