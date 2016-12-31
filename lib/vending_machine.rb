@@ -86,11 +86,9 @@ class VendingMachine
   end
 
   def check_display
-    disp = ""
     if @current_selection
-  byebug
       price = dollarize_amt(@current_selection[:price])
-      puts "PRICE: #{price}"
+      puts "PRICE: $#{price}"
     end
 
     if @current_amount==0
@@ -99,7 +97,7 @@ class VendingMachine
       if exact_change
         puts "EXACT CHANGE ONLY"
       else
-        amt = dollarize_amt(@current_selection[:price])
+        amt = dollarize_amt(@current_amount)
         puts "CURRENT AMOUNT: $#{amt}"
       end
     end

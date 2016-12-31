@@ -180,18 +180,17 @@ describe VendingMachine do
       it 'displays current item price and correct prompt when a selection has been made' do
         vend.current_selection = {name: "candy", price: 65}
         allow($stdout).to receive(:puts)
-        expect($stdout).to receive(:puts).with("PRICE: 65")
-
-        vend.check_display
-
-        allow($stdout).to receive(:puts)
+        expect($stdout).to receive(:puts).with("PRICE: $0.65")
         expect($stdout).to receive(:puts).with("CURRENT AMOUNT: $0.25")
 
         vend.check_display
+      end
 
+      it 'displays both item price and prompts to insert coins when none have been added' do
         vend.current_amount = 0
 
         allow($stdout).to receive(:puts)
+        expect($stdout).to receive(:puts).with("PRICE: $0.65")
         expect($stdout).to receive(:puts).with("INSERT COINS")
 
         vend.check_display
