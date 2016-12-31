@@ -18,8 +18,13 @@ describe VendingMachine do
   end
 
   describe "#accept_coins" do
+    before(:each) do
+      vend.current_amount = 0
+    end
 
-    it "identifies coins based on string passed to it" do
+    it "identifies coins based on string passed to it and rejects pennies" do
+      vend.accept_coins("quarter")
+      expect(vend.current_amount).to eq(25)
       expect(vend.accept_coins("penny")).to eq("I can't accept pennies, bub.")
     end
 
@@ -27,15 +32,14 @@ describe VendingMachine do
       expect(vend.accept_coins("silver_dollar")).to eq("I only take nickels, dimes or quarters")
     end
 
-    it "assigns integer value based on coin name" do
-      expect(vend.accept_coins("nickel")).to eq(5)
-      expect(vend.accept_coins("dime")).to eq(10)
-      expect(vend.accept_coins("quarter")).to eq(25) 
-    end
-
     it "keeps track of coins added" do
+      vend.accept_coins("nickel")
+      vend.accept_coins("dime")
+      vend.accept_coins("quarter")
+
       expect(vend.current_amount).to eq(40)
     end
+
   end
 
   describe "#select_product" do 

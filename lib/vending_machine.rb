@@ -48,7 +48,7 @@ class VendingMachine
       return "I only take nickels, dimes or quarters"
     else
       @current_amount += COINS[coin_name]
-      return COINS[coin_name]
+      check_display
     end
   end
 
@@ -112,11 +112,17 @@ class VendingMachine
   def sold_out?(item)
     index = item - 1
 
-    print "ITEM STOCK: #{@products[index][:stock]}\n"
     if @products[index][:stock] < 1
       @current_selection = nil
       puts "SOLD OUT"
       check_display
+    end
+  end
+
+  def exact_change
+    max = @products.collect{|i| i[:price]}.max
+    if @current_amount > max
+
     end
   end
 
